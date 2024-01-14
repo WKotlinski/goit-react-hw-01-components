@@ -1,14 +1,16 @@
 .statistics {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   font-size: 20px;
 }
 .label {
-  height: auto;
+  gap: 30px;
 }
 .stat {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   gap: 10px;
   margin-block-end: 10px;
 }
