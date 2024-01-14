@@ -1,14 +1,15 @@
 import PropTypes from "prop-types"; // Importuj PropTypes
 import friends from "../../assets/friends.json";
+import css from "./frieendslist.module.css";
 
 const FriendListItem = ({ avatar, name, isOnline }) => {
-  const statusClass = isOnline ? "online" : "offline";
+  const statusClass = isOnline ? css.online : css.offline;
 
   return (
     <li className="item">
-      <span className={`status ${statusClass}`}></span>
-      <img className="avatar" src={avatar} alt="User avatar" width="48" />
-      <p className="name">{name}</p>
+      <span className={`${css.status} ${statusClass}`}></span>
+      <img className={css.avatar} src={avatar} alt="User avatar" width="48" />
+      <p className={css.name}>{name}</p>
     </li>
   );
 };
@@ -21,7 +22,7 @@ FriendListItem.propTypes = {
 
 const FriendList = ({ friends }) => {
   return (
-    <ul className="friend-list">
+    <ul className={css.friendList}>
       {friends.map((friend) => (
         <FriendListItem key={friend.id} {...friend} />
       ))}
