@@ -1,11 +1,18 @@
 .status {
+  margin-block-start: 20px;
   width: 10px;
   height: 10px;
   background-color: green;
 }
 
 .item {
-  background-color: red;
+  display: flex;
+  padding: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px hsla(199, 50%, 50%, 0.8) solid;
+  width: 60px;
 }
 .offline {
   display: block;
