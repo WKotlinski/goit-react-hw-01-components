@@ -1,10 +1,9 @@
-import data from "../../assets/data.json";
 import PropTypes from "prop-types";
 import css from "./statistics.module.css";
-const Stats = ({ stats }) => {
+const Statistic = ({ stats, title }) => {
   return (
     <section className={css.statistics}>
-      <h2 className={css.title}>Upload stats</h2>
+      {title && <h2 className={css.title}>{title}</h2>}
       <ul className={css.stat}>
         {stats.map((stat) => (
           <li key={stat.id} className={css.item}>
@@ -16,8 +15,15 @@ const Stats = ({ stats }) => {
     </section>
   );
 };
-Stats.propTypes = {
-  stats: PropTypes.array.isRequired,
+Statistic.propTypes = {
+  title: PropTypes.string,
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 };
-const Statistic = () => <Stats stats={data} />;
+
 export default Statistic;

@@ -1,5 +1,4 @@
 import PropTypes from "prop-types"; // Importuj PropTypes
-import friends from "../../assets/friends.json";
 import css from "./frieendslist.module.css";
 
 const FriendListItem = ({ avatar, name, isOnline }) => {
@@ -20,7 +19,7 @@ FriendListItem.propTypes = {
   isOnline: PropTypes.bool.isRequired,
 };
 
-const FriendList = ({ friends }) => {
+export default function FriendList({ friends }) {
   return (
     <ul className={css.friendList}>
       {friends.map((friend) => (
@@ -28,14 +27,15 @@ const FriendList = ({ friends }) => {
       ))}
     </ul>
   );
-};
+}
 
 FriendList.propTypes = {
-  friends: PropTypes.array.isRequired,
-  id: PropTypes.number.isRequired,
-  avatar: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  isOnline: PropTypes.bool.isRequired,
+  friends: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      avatar: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      isOnline: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
 };
-const FriendLists = () => <FriendList friends={friends} />;
-export default FriendLists;

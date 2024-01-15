@@ -2,7 +2,7 @@ import transactions from "../../assets/transactions.json";
 import PropTypes from "prop-types";
 import css from "./transactionhistory.module.css";
 
-const History = ({ item }) => (
+const TransactionHistory = ({ item }) => (
   <table className={css.transactionHistory}>
     <thead>
       <tr>
@@ -23,10 +23,13 @@ const History = ({ item }) => (
   </table>
 );
 History.propTypes = {
-  item: PropTypes.array.isRequired,
-  type: PropTypes.string.isRequired,
-  amount: PropTypes.string.isRequired,
-  currency: PropTypes.string.isRequired,
+  item: PropTypes.arrayOf(
+    PropTypes.shape({
+      type: PropTypes.string.isRequired,
+      amount: PropTypes.string.isRequired,
+      currency: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
-const TransactionHistory = () => <History item={transactions} />;
+
 export default TransactionHistory;
